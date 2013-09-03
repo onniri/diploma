@@ -1,0 +1,2 @@
+$("#interests-want").html("<%= escape_javascript(render :partial => 'interests/interest', :collection => @interests_want, :locals => {:is_want => true}) %>");
+$("#interests-can").html("<%= escape_javascript(render :partial => 'interests/interest', :collection => @interests_can, :locals => {:is_want => false}) %>");

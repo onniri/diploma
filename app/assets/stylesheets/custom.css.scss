@@ -1,0 +1,666 @@
+@import "bootstrap";
+$grayMediumLight: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+body {
+  padding-top: 40px;
+  background-color: #f0f0f0;
+}
+.body-container{
+  background-color: #fff;
+  padding-right: 4px;
+  padding-left: 4px;
+  padding-bottom: 4px;
+}
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+/* header */
+.logo {
+  background-image: url(image_path('logo.png'));
+  background-repeat: no-repeat;
+  height: 420px;
+}
+.logo-small{
+  height: 53px;
+  background-image: url(image_path('logo-small.png'));
+}
+.welcome-registration{
+  font-size: 16pt;
+  background-repeat: no-repeat;
+  background-image: url(image_path('register_circle.png'));
+  margin-top: 2px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+.welcome-registration a{
+  color: #000;
+}
+.welcome-greetings{
+  margin-top: -58px;
+}
+.divider {
+  height: 4px;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+}
+.welcome-divider{
+  background-repeat: no-repeat;
+  background-image: url(image_path('welcome_divider_line.png'));
+  height: 17px;
+  margin-top: 240px;
+}
+.can-big {
+  padding-top: 120px;
+  padding-left: 120px;
+  font-size: 32pt;
+  background-image: url(image_path('welcome_circle_can_big.png'));
+  background-repeat: no-repeat;
+  display: inline-block;
+  padding-bottom: 55px;
+  color: #000;
+
+}
+.scale-70{
+  transform: scale(0.5);
+}
+.want-big {
+  color: #000;
+  padding-top: 120px;
+  padding-left: 120px;
+  padding-bottom: 55px;
+  font-size: 32pt;
+  background-image: url(image_path('welcome_circle_want_big.png'));
+  background-repeat: no-repeat;
+  display: inline-block;
+  margin-right: 4px;
+}
+.interest-title{
+  font-size: 2em;
+  letter-spacing: -2px;
+  margin-bottom: 5px;
+  text-align: left;
+  line-height: 1;
+  font-weight: bold;
+  color: black;
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+.title-want {
+  background-image: url(image_path('want_circle.png'));
+}
+.title-can {
+  background-image: url(image_path('can_circle.png'));
+}
+.interest-tags{
+  margin: 0;
+  background: #F2F2F2;
+  padding: 5px 10px 5px 15px;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+.interest-meta{
+
+}
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $grayMediumLight;
+  color: $grayLight;
+  a {
+    color: $gray;
+    &:hover {
+      color: $grayDarker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+/* users#show bar */
+.user_minibar {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: #E9EDF1;
+  padding-top: 3px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 3px;
+  color: #607387;
+  font-weight: 700;
+}
+.message-unread {
+  background-color: thistle;
+}
+.private-message {
+  padding-top: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
+  padding-bottom: 5px;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.tagcloud {
+  float:left;
+  width:600px;
+  margin-top:20px;
+  margin-right:10px;
+}
+
+.tagcloud a {
+  font-size:13px;
+  color:#999;
+  border-radius: 3px;
+  background: #333;
+  border-bottom:2px solid #888;
+  margin:5px;
+  padding:5px 5px 7px;
+  float:left;
+  -moz-transition: all 0.2s 0.01s ease-in;
+  -o-transition: all 0.2s 0.01s ease-in;
+  -webkit-transition: all 0.2s 0.01s ease-in;
+}
+
+.tagcloud a:hover {
+  color:#fff;
+  background-color:#FF6766;
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  -o-transform: rotate(5deg);
+}
+.interest-users-want a {
+  color: $red;
+}
+.interest-users-can a {
+  color: $green;
+}
+.hidden{
+  display: none;
+  visibility: hidden;
+}
+.unread-messages-count {
+  font-size: 8pt;
+  min-height: 8px;
+  padding: 2px;
+  background-color: $wellBackground;
+  border: 1px solid darken($wellBackground, 7%);
+  @include border-radius($baseBorderRadius);
+  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  background-color: $grayMediumLight;
+  blockquote {
+    border-color: #ddd;
+    border-color: rgba(0,0,0,.15);
+  }
+}
+.name-link {
+  font-size: 14pt;
+  display: block;
+}
+.user-search-user{
+  padding-top: 7px;
+  border-bottom: 1px solid darken($wellBackground,7%);
+  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+}
+.interests-logo{
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-image: url(image_path('interests-title.png'));
+  width: 297px;
+  height: 127px;
+  margin: 0 auto 0px;
+}
+
+.ann{
+  .body-container{
+    background-color: #fff;
+    padding-right: 4px;
+    padding-left: 4px;
+    padding-bottom: 4px;
+  }
+  body, th, td, input, textarea {
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #000;
+    text-decoration: none;
+  }
+  /**vk**/
+  tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+  }
+  table {
+    border-collapse: inherit;
+    border-spacing: 3px;
+    border-color: #666;
+    background-color: #EAEAEA;
+    border-width: 2px;
+  }
+  .dialogs_photo {
+    width: 50px;
+    padding: 5px 5px 2px;
+    vertical-align: top;
+  }
+  .dialogs_info {
+    padding: 5px;
+    vertical-align: middle;
+    width: 135px;
+  }
+  .dialogs_msg_contents {
+    padding: 0px;
+    vertical-align: middle;
+  }
+  .dialogs_msg_body {
+    padding: 6px 8px 8px;
+  }
+  .clear_fix {
+    display: block;
+  }
+  .dialogs_msg_text {
+    color: #000;
+    line-height: 160%;
+    width: 400px;
+  }
+  .wrapped {
+    overflow: hidden;
+    word-wrap: break-word;
+  }
+  /**vk**/
+  input, textarea {
+    font-weight: bold;
+  }
+
+  input.text {
+    padding: 2px 5px;
+    background: #F8FAEB;
+    border-top: 1px solid #4D5719;
+    border-left: 1px solid #4D5719;
+    border-right: 1px solid #626456;
+    border-bottom: 1px solid #626456;
+  }
+
+  input.button {
+    background: #3C7BCF;
+    border-top: 1px solid #3C7BCF;
+    border-left: 1px solid #3C7BCF;
+    border-right: 1px solid #3C7BCF;
+    border-bottom: 1px solid #3C7BCF;
+    color: #FFFFFF;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1;
+  }
+
+  h1 {
+    font-size: 3em;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    text-align: left;
+    background:url(image_path('register_circle.png')) no-repeat bottom left;
+  }
+
+  h2 {
+    font-size: 1.7em;
+    letter-spacing: -1px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: normal;
+    color: $grayLight;
+  }
+  p, ul, ol {
+    margin-top: 1.5em;
+    line-height: 1.8em;
+    font-size: 1.2em;
+  }
+
+  ul, ol {
+    margin-left: 3em;
+  }
+
+  blockquote {
+    margin-left: 3em;
+    margin-right: 3em;
+  }
+
+  a {
+    text-decoration: none;
+    color: #2F9591;
+  }
+
+  a:hover {
+    border: none;
+  }
+
+  h1 a, h2 a, h3 a {
+    border: none;
+    text-decoration: none;
+    color: #000;
+  }
+
+  h1 a:hover, h2 a:hover, h3 a:hover {
+    background: none;
+    color: #333;
+  }
+
+  hr {
+    display: none;
+  }
+
+  /* Header */
+
+  #header {
+    width: 900px;
+    height:47px;
+    margin: 0 auto;
+
+  }
+
+  /* Logo */
+
+  #logo {
+    width: 900px;
+    height: 53px;
+    margin: 0 auto;
+    background: url(images/logo3.png) no-repeat left top;
+  }
+
+  #logo h1, #logo h2 {
+    margin: 0;
+    padding: 0;
+    text-transform: lowercase;
+  }
+
+  #logo h1 {
+    padding: 90px 5px 0 0px;
+    font-size: 48px;
+    color: #FFFFFF;
+  }
+
+  #logo h2 {
+    padding: 0px 0 0 0px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #BD0A70;
+  }
+
+  #logo p {
+    clear: left;
+    margin: 0;
+    padding: 0 0 0 20px;
+    line-height: normal;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #C2C5B1;
+  }
+
+  #logo a {
+    color: #FFFFFF;
+  }
+
+  /* Page */
+
+  #page {
+    min-height: 100%;
+    height: auto !important;
+    height: 90%;
+    width: 900px;
+    margin: 0 auto;
+    padding-top: 10px;
+    background: #FFFFFF;
+    border-top: none;
+  }
+
+  #group  {
+    background:url(images/3.png) no-repeat bottom left;
+    width: 237px;
+    height: 118px;
+    margin: 0 auto 0px;
+  }
+
+  #users  {
+    background:url(images/4.png) no-repeat bottom left;
+    width: 203px;
+    height: 127px;
+    margin: 0 auto 0px;
+  }
+
+  #interests  {
+    background:url(images/5.png) no-repeat bottom left;
+    width: 297px;
+    height: 127px;
+    margin: 0 auto 0px;
+  }
+  #conversations  {
+    background:url(images/conversations.png) no-repeat bottom left;
+    width: 513px;
+    height: 118px;
+    margin: 0 auto 0px;
+  }
+
+  #about  {
+    background:url(images/about.png) no-repeat bottom left;
+    width: 200px;
+    height: 127px;
+    margin: 0 auto 0px;
+  }
+  #help  {
+    background:url(images/help.png) no-repeat bottom left;
+    width: 170px;
+    height: 127px;
+    margin: 0 auto 0px;
+  }
+  /* Content */
+  #want_h1 {
+    font-size: 2em;
+    letter-spacing: -2px;
+    margin-bottom: 5px;
+    text-align: left;
+    background:url(images/want_circle.png) no-repeat bottom left;
+  }
+  #can_h1 {
+    font-size: 2em;
+    letter-spacing: -2px;
+    margin-bottom: 5px;
+    text-align: left;
+    background:url(images/can_circle.png) no-repeat bottom left;
+  }
+  #want{
+    width:400px;
+    float:right;
+  }
+  #can{
+    margin-right:400px;
+  }
+
+  #want_can_logo{
+    width: 900px;
+    height: 95px;
+    background:url(images/want-can.png) no-repeat bottom left;
+    margin: 10px auto 15px;
+  }
+
+  #content {
+    padding-bottom: 50px;
+    float: left;
+    width: 800px;
+    margin-left:50px;
+
+  }
+
+  #post_1 {
+    color: #2F9591;
+
+
+  }
+
+  .post .title {
+    margin: 0;
+    font-weight: normal;
+  }
+
+  .post h1.title {
+    padding: 25px 0  0 15px;
+    height: 40px;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: lowercase;
+  }
+
+  .post .entry {
+    padding: 0 10px 10px 10px;
+  }
+
+  .post .meta {
+    margin: 0;
+    padding: 0px 0px 0px 15px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #CFCFCF;
+  }
+
+  .post .meta a {
+    color: #D44C7C;
+  }
+
+  .post .links {
+    margin: 0;
+    padding: 0px 0px 15px 15px;
+  }
+
+  .post .tags {
+    margin: 0;
+    background: #F2F2F2;
+    padding: 5px 10px 5px 15px;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+
+  .post .links a, .post .tags a {
+    border: none;
+
+  }
+
+}
+.footer {
+  height: 100px;
+  background: #000000;
+  padding-top: 20px;
+  text-align: justify;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+.footer p {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #FFFFFF;
+}
+
+.footer a {
+  background: #BB096B;
+  padding: 2px 7px;
+  color: #FFFFFF;
+}
+.conversation{
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+.rules{
+  text-align: justify;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: black;
+  border: 1px solid black;
+  background-color: aliceblue;
+  padding: 5px;
+}

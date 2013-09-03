@@ -1,0 +1,6 @@
+<li>
+  <div class="private-message<% unless message.is_read? %> message-unread<% end %>">
+   <span><%= link_to message.user.first_name, user_path(message.user) %>: </span>
+   <p><%= message.message_text %></p>
+  </div>
+</li>

@@ -1,0 +1,26 @@
+<li>
+  <%= link_to interest_path(interest) do %>
+      <h6 class="interest-title <%= (is_want)?'title-want':'title-can' %>"><%= interest.title %></h6>
+  <% end %>
+  <div class="interest-tags">
+    Tags:
+    <% interest.tags.each do |t| %>
+      <span>
+        <%= link_to t.tag, tag_path(t) %>
+      </span>
+    <% end %>
+  </div>
+  <div class="interest-description">
+    <%= interest.description %>
+  </div>
+  <% if show_link %>
+      <div class="meta">
+        <%= link_to ((!is_want)?'I want':'I Can'), ((!is_want)?interest_want_path(interest):interest_can_path(interest)) %>
+      </div>
+  <% end %>
+  <% if admin_user? %>
+  <div class="meta">
+    <%= link_to 'Destroy', interest_path(interest), :method => :delete %>
+  </div>
+  <% end %>
+</li>

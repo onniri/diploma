@@ -1,0 +1,22 @@
+<li>
+  <h6 class="interest-title title-want"><%= link_to group.name, group_path(group) %></h6>
+  <div class="interest-tags">
+    Tags:
+    <% group.tags.each do |t| %>
+      <span>
+        <%= link_to t.tag, tag_path(t) %>
+      </span>
+    <% end %>
+  </div>
+  <div class="interest-description">
+    <%= group.description %>
+  </div>
+  <div class="meta">
+    <%= link_to 'Join group', group_join_path(group) %>
+  </div>
+  <% if admin_user? %>
+      <div class="meta">
+        <%= link_to 'Destroy', group_path(group), :method => :delete %>
+      </div>
+  <% end %>
+</li>

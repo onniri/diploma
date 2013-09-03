@@ -1,0 +1,14 @@
+<li>
+  <div class="row user-search-user">
+    <%= image_tag user.avatar(:medium), :class => 'pull-left', :size => '200x200' %>
+    <%= link_to user.name, user_path(user), :class=>'name-link' %>
+    <% unless current_user.nil?  %>
+        <% unless current_user.id==user.id %>
+            <%= link_to 'New Message', new_user_conversation_path(user), :class => 'btn btn-small pull-right' %>
+        <% end %>
+    <% end %>
+    <% unless user.location.nil? %>
+        <h5><%= user.location.ascii_name %></h5>
+    <% end %>
+  </div>
+</li>

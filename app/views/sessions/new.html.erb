@@ -1,0 +1,17 @@
+<h1><%= image_tag 'signin_logo.png' %></h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_tag '/signin', :method => 'post' do %>
+        <%= label_tag "email", "Email" %>
+        <%= text_field_tag "email" %>
+        <%= label_tag "password", "Password" %>
+        <%= password_field_tag "password" %>
+        <div>
+            <%= submit_tag "Sign In", class:"btn btn-large btn-primary"  %>
+            <p style="display: inline;font-size: 14pt;">No account?  <%= link_to "Sign up now!", signup_path %></p>
+        </div>
+    <% end %>
+
+  </div>
+</div>
+

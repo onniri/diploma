@@ -1,0 +1,13 @@
+<li>
+  <%= link_to user_conversation_path(current_user,conversation) do %>
+      <div class="well well-small">
+        <div style="display: inline-block;width: 20%;text-align: center;vertical-align: middle;" class="well well-small">
+            <%= image_tag conversation.opposite_user(current_user).avatar.url(:tiny),:size => "64x64", :style => 'display:block;' %>
+            <%= conversation.opposite_user(current_user).name %>
+        </div>
+        <div style="display: inline-block; width: 70%;height: 80%;" class="well well-small pull-right">
+          <%= conversation.messages.order(:post_date=>:desc).first.message_text %>
+        </div>
+      </div>
+  <% end %>
+</li>

@@ -1,0 +1,36 @@
+<div class="interests-logo"></div>
+
+<div class="row">
+  <div class="offset3 span6">
+    <%= form_tag interests_path, :method => :get, :remote=>true do %>
+        <%= search_field_tag :search_request, params[:search_request] %>
+        <%= submit_tag 'Find', :class => 'btn btn-search' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span5">
+    <%= link_to new_interest_path(:want => true) do %>
+        <div class="want-big pull-left scale-70">Want</div>
+    <% end %>
+  </div>
+  <div class="offset2 span5">
+    <%= link_to new_interest_path(:can => true) do %>
+    <div class="can-big pull-right scale-70">Can</div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+<div class="offset1 span5">
+  <ul class="unstyled" id="interests-want">
+    <%= render :partial => 'interests/interest', :collection => @interests_want, :locals => {:is_want => true,:show_link => true} %>
+  </ul>
+</div>
+  <div class="offset1 span5">
+    <ul class="unstyled" id="interests-can">
+      <%= render :partial => 'interests/interest', :collection => @interests_can, :locals => {:is_want => false,:show_link => true} %>
+    </ul>
+  </div>
+</div>

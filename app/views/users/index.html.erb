@@ -1,0 +1,27 @@
+<h1><%= image_tag image_path('users_logo.png') %></h1>
+<div class="row">
+  <%= form_tag users_path, :method => :get, :remote=>true do %>
+      <div class="span6 offset3">
+        <%= search_field_tag :search_request, params[:search_request] %>
+        <%= submit_tag  'Find', :class => 'btn btn-search', :id => 'search-button'%>
+      </div>
+      <div class="offset1 span2">
+
+      </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="offset3 span6">
+    <ul class="unstyled" id="users-index">
+      <%= render @users %>
+      <li>
+        <%= will_paginate @users %>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="offset4 span6">
+
+  </div>
+</div>

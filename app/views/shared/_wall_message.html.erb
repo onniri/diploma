@@ -1,0 +1,13 @@
+<li>
+  <div class="row">
+    <div class="span1">
+      <%= link_to(user_path(message.user)) do  %>
+        <%= image_tag message.user.avatar.url(:thumb) %>
+        <div class="">
+          <%= message.user.full_name %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</li>

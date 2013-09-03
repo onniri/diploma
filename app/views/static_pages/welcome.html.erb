@@ -1,0 +1,79 @@
+<div>
+  <div class="row">
+    <div class="span12 logo">
+      <% if current_user.nil? %>
+      <div class="pull-right welcome-registration">
+
+            <%= link_to 'Registration',new_user_path %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 7px;">
+    <div class="span12 welcome-greetings">
+      <div class="welcome-can-want pull-right">
+        <h3>Tell us what you want or what you can do</h3>
+        <div class="pull-right">
+          <%= link_to new_interest_path(:want => true) do %>
+              <div class="want-big">I Want</div>
+          <% end %>
+          <%= link_to new_interest_path(:can => true) do %>
+              <div class="can-big">I Can</div>
+          <% end %>
+        </div>
+      </div>
+      <div class="welcome-divider"></div>
+    </div>
+  </div>
+  <div class="row ann">
+    <div id="page">
+      <!-- start content -->
+      <h2 style="font-size:35px; font-family:Arial, Helvetica, sans-serif"><center>Осуществляй мечты и помогай другим</center></h2>
+      <div id="content">
+        <div id="want">
+          <div class="post">
+
+            <div id="landing-content-about">
+              <%= image_tag 'home_w.png', :alt => 'Расскажите о своих желаниях и возможностях',:style=>'float: left;margin-bottom: 40px; margin-right:20px;'%>
+              На WantCan Вы можете рассказать о своих желаниях и возможностях другими участникам.<br><br>
+            </div>
+          </div>
+        </div>
+
+        <div id="can">
+          <div class="post">
+            <div id="landing-content-requests">
+              <%= image_tag 'home_c.png', :alt => 'Оставляйте заявки', :style => 'float: left;margin-bottom: 40px; margin-right:20px' %>
+              Оставляйте заявки на чужие <span style="font: 17px 'Funcity3Basic';color:#2F9591"><strong>Want</strong></span> и
+              <span style="font:17px 'Funcity3Basic';color:#D44C7C"><strong>Can</strong></span>, помогите воплотиться чужим желаниям или исполните свои!
+            </div>
+          </div>
+
+
+
+
+        </div>
+
+      </div>
+
+      <h2 style="font-size:35px; font-family:Arial, Helvetica, sans-serif"><center>Узнайте, что хотят и могут другие</center></h2>
+      <!-- end content -->
+
+      <div style="clear: both;">&nbsp;</div>
+    </div>
+  </div>
+  <div class="welcome-divider" style="margin: 0px;"></div>
+  <div class="row">
+    <div class="offset1 span5">
+      <ul class="unstyled" id="interests-want">
+        <%= render :partial => 'interests/interest', :collection => @interests_want, :locals => {:is_want => true,:show_link => true} %>
+      </ul>
+    </div>
+    <div class="offset1 span5">
+      <ul class="unstyled" id="interests-can">
+        <%= render :partial => 'interests/interest', :collection => @interests_can, :locals => {:is_want => false,:show_link => true} %>
+      </ul>
+    </div>
+  </div>
+</div>

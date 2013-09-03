@@ -1,0 +1,21 @@
+<br />
+<div class="row">
+  <div class="offset2 span6">
+    <%= render @group %>
+  </div>
+  <div class="offset2 span2">
+    <% if @group.has_user(current_user) %>
+        <%= link_to 'Leave group', group_leave_path(@group)  %>
+    <% else %>
+        <%= link_to 'Join group', group_join_path(@group) %>
+    <% end %>
+  </div>
+
+</div>
+<div class="row">
+  <div class="offset10 span2">
+    <ul class="unstyled">
+      <%= render :partial => 'groups/group_users_part', :collection => (@group.users.limit(10)), :as => :user %>
+    </ul>
+  </div>
+</div>

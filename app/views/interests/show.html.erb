@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="offset1 span3">
+    <div class="row">
+      <h6>Users want this</h6>
+      <div class="interest-users-want">
+        <%= render :partial => 'user_at_interest', :collection => @users_want, :as => :user %>
+      </div>
+    </div>
+    <div class="row">
+      <h6>Users can give this</h6>
+      <div class="interest-users-can">
+        <%= render :partial => 'user_at_interest', :collection => @users_can, :as => :user %>
+      </div>
+    </div>
+  </div>
+  <div class="offset1 span5">
+    <ul class="unstyled">
+      <%= render :partial => 'interests/interest', :locals => {:is_want => false, :interest => @interest, :show_link => false} %>
+    </ul>
+    <hr />
+    <% if current_user.is_interested_in(@interest) %>
+        <% if @current_user_want %>
+            <%= link_to "Don't want", interest_dont_want_path(@interest) %>
+        <% else %>
+            <%= link_to "Cannot", interest_cannot_path(@interest) %>
+        <% end %>
+    <% else %>
+        <%= link_to 'I Want', interest_want_path(@interest) %>
+        <%= link_to 'I Can', interest_can_path(@interest), :class => 'pull-right' %>
+    <% end %>
+  </div>
+</div>
+
+

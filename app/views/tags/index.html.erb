@@ -1,0 +1,17 @@
+<h1><%= image_tag 'tags_logo.png' %></h1>
+<div class="row">
+  <div class="offset2 span8">
+    <%= form_tag tags_path, :remote => true, :method => :get do %>
+        <%= search_field_tag :search_requset %>
+        <%= submit_tag 'Find', :class => 'btn btn-search' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="offset2 span8">
+    <div class="tagcloud" id="tags">
+      <%= render @tags %>
+    </div>
+  </div>
+</div>

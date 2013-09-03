@@ -1,0 +1,80 @@
+<h1>Create interest</h1>
+<script type="text/javascript">
+    $(document).ready(function (){
+        window.interests_completion
+        $("#interest_title").typeahead({
+            source: function(query, process){
+                $.getJSON('<%= interests_completion_path %>/'+query).done(function(json){
+                    window.interests_completion=json;
+                    var interest_titles=[];
+                    var i;
+                    for(i=0;i<json.length;++i)
+                        interest_titles.push(json[i].title)
+                    return process(interest_titles);
+                });
+            },
+            minLength: 3
+        });
+        $("#new_interest").submit(function(){
+            var formValid=true;
+            var splitted = $("#tags").val().split(" ");
+            if(splitted.length>10)
+                formValid=false;
+            if(!formValid)
+                alert("The tags should be not more than 10 and they should be simple space-separated tags");
+            return formValid;
+        });
+        $("#interest_title").change(function(){
+            var i;
+            for(i=0;i<window.interests_completion.length;++i){
+                if(window.interests_completion[i].title==$(this).val()){
+                    $("#interest_id").val(window.interests_completion[i].id);
+                    $("#interest_description").val(window.interests_completion[i].description);
+                }
+            }
+        });
+    });
+</script>
+<div class="row">
+  <div class="offset1 span6">
+    <%= form_for @interest do |f| %>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+        <div class="container">
+          <%= radio_button_tag 'want_can', 'want', ((@interest.user_interests.first.is_consumer)?true:false), :style => 'display:inline;' %>
+          <%= label_tag 'want', 'I Want...', :style => 'display:inline;' %>
+        </div>
+        <div class="container">
+          <%= radio_button_tag 'want_can', 'can', ((@interest.user_interests.first.is_consumer)?false:true), :style => 'display:inline;' %>
+          <%= label_tag 'can', 'I Can...', :style => 'display:inline;' %>
+        </div>
+        <%= label_tag :tags, 'Tags' %>
+        <%= text_field_tag :tags %>
+        <%= f.submit 'Submit',:class => 'btn btn-primary' %>
+        <%= hidden_field_tag :'interest[id]', :value => '' %>
+    <% end %>
+  </div>
+  <div class="span4 rules">
+    <h6>Правила хорошего тона</h6>
+    <p>Под «Я Могу» на сервисе понимаются ваши предложения о том, что вы можете, умеете и готовы исполнить для других.</p>
+
+    <p>1. Пожалуста, не указывайте в «Я Могу» ваши абстрактные возможности. Возможно многим покажется интересным, что вы можете имитировать звуки лемура-самца в брачный период, но будет гораздо интереснее, если вы сможете кого-то научить имитировать подобные звуки.</p>
+
+    <p>2. Старайтесь быть как можно более конкретными и точными в определении своих «Я Могу», помните, что размещая их, вы претендуете на роль исполнителя. Рассказывайте о том, что вы действительно можете и желаете сделать для других</p>
+
+    <h6>Не создавайте «Я Могу»:</h6>
+
+    <p>1. Невыполнимые. Помните, что размещая предложение, вы предполагаете его выполнимость вами для другого.</p>
+
+    <p>2. Нецензурные, призывающие к агрессии, насилию и иных злодеяниям предложения. Будьте дружелюбны.</p>
+
+    <p>3. Напечатанные с использованием заглавных букв или содержащие излишнее количество специальных символов. Выделяйте свои «Я Могу», наполняя их интересным содержанием.</p>
+
+<p>    4. Содержащие в себе прямую рекламу на сторонние ресурсы. Вы всегда можете проявить изобретательность, и в таком случае это не будет выглядеть как спам и раздражать остальных пользователей.
+</p>
+
+  <h6>  В случае несоответствия Вашего «Я Хочу» любому из пунктов, злобная администрация оставляет за собой право удалить его.</h6>
+  </div>
+</div>

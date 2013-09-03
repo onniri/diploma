@@ -1,0 +1,80 @@
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#details").hide();
+        $("#show-details").click(function (){
+            $("#details").toggle("blind");
+            return false;
+        });
+    });
+</script>
+<div class="row">
+  <div class="span4">
+    <div class="profile-photo well">
+      <%= image_tag @user.avatar.url(:medium) %>
+      <% unless current_user.nil? %>
+          <% unless @user.id == current_user.id %>
+              <%= link_to 'New Message', new_user_conversation_path(@user), :class => 'btn btn-block btn-primary' %>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="span7 well">
+    <h3><%= @user.full_name %></h3>
+    <div class="divider"></div>
+    <% unless @user.location.nil? %>
+        <h5><%= @user.location.ascii_name %></h5>
+    <% end %>
+    <% if @user.is_age_visible? %>
+        <h6><%= @user.age %> years</h6>
+    <% end %>
+    <div class="well">
+      <div>
+        <%= @user.description %>
+      </div>
+      <a href="#" id="show-details" class="text-center" style="display: block;">Show details</a>
+      <div id="details" class="">
+        <ul class="unstyled">
+          <% if @user.email_public? %>
+              <li><b>Email:</b></li>
+              <li><%= @user.email %></li>
+          <% end %>
+          <li><b>Skype:</b></li>
+          <li><%= @user.skype %></li>
+          <li><b>Jabber:</b></li>
+          <li><%= @user.jabber %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <% unless @user.wall.wall_messages.count==0 %>
+      <div class="span7 well wall">
+        <ul class="unstyled">
+          <%= render :partial => 'shared/wall_message', :collection => @user.wall.wall_messages, :as => :message %>
+        </ul>
+      </div>
+  <% end %>
+</div>
+<div class="row">
+  <div class="span4">
+    <ul class="unstyled">
+      <%= render @groups %>
+    </ul>
+  </div>
+  <div class="span7 well" style="margin-top: -30px;">
+    <div class="row">
+      <div class="span3">
+        User wants
+        <ul class="unstyled">
+            <%= render :partial => 'interests/simple_interest', :collection => @interests_want, :as => :interest %>
+        </ul>
+      </div>
+      <div class="offset1 span3">
+        User can
+        <ul class="unstyled">
+          <%= render :partial => 'interests/simple_interest', :collection => @interests_can, :as => :interest %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

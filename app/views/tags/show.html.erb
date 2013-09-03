@@ -1,0 +1,20 @@
+<h1><%= @tag.tag %></h1>
+<div class="row">
+  <div class="offset1 span5">
+    <h6>Interests tagged with this tag</h6>
+    <ul class="unstyled">
+      <%= render :partial => 'interests/interest', :collection => @interests, :as => :interest, :locals=>{:is_want=>true, :show_link=>false}  %>
+    </ul>
+  </div>
+  <div class="offset1 span5">
+    <h6>Groups tagged with this tag</h6>
+    <ul class="unstyled">
+      <%= render :partial => 'groups/group', :collection => @groups, :as => :group %>
+    </ul>
+  </div>
+</div>
+<% if admin_user? %>
+    <div class="meta" style="width: 100%;">
+      <%= link_to 'Destroy this tag', tag_path(@tag), :method => :delete, :style => 'font-weight:bold;text-align:center;'%>
+    </div>
+<% end %>
